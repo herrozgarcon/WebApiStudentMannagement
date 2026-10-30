@@ -24,5 +24,11 @@ public class StudentRepo
          var studentlist= await _dbContext.Students.ToListAsync();
          return studentlist;
     }
+    
+    // GET: Retrieve student by ID
+    public async Task<Students>? GetStudentById(int id)
+    {
+        return await _dbContext.Students.FirstOrDefaultAsync(s => s.StudentsId == id);
+    }
 
 }

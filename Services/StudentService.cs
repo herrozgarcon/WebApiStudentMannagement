@@ -21,4 +21,10 @@ public class StudentService
     {
         return await StudentRepoObj.displayStudents();
     }
+
+    public async Task<Students>? GetStudentsById(int id)
+    {
+        var student  = StudentRepoObj.GetStudentById(id);
+        return await student;
+    }
 }

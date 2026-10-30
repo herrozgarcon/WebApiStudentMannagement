@@ -17,7 +17,7 @@ public class StudentController : Controller
         _studentService = studentService;
     }
 
-
+    //get api/students
     [HttpGet]
     public async Task<ActionResult<List<Students>>> DisplayStudents()
     {
@@ -25,8 +25,21 @@ public class StudentController : Controller
 
         return Ok(students);
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult> GetStudentById(int id)
+    {
+        var student =await  _studentService.GetStudentsById(id);
+        if (student == null)
+        {
+            return NotFound($"Student with ID {id} was not found.");
+        }
+
+        return Ok(student);
+    }
     
     
+    [HttpGet]
     // POST: api/students
     [HttpPost]
     public async Task<IActionResult> AddStudent(CreateStudentDto studentDto)
