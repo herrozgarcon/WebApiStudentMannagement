@@ -16,4 +16,9 @@ public class StudentService
     {
         await StudentRepoObj.addasync(student);
     }
+
+    public async Task<List<Students>> GetAllStudents()
+    {
+        return await StudentRepoObj.displayStudents();
+    }
 }

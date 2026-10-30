@@ -16,9 +16,15 @@ public class StudentController : Controller
     {
         _studentService = studentService;
     }
-    
- 
-    
+
+
+    [HttpGet]
+    public async Task<ActionResult<List<Students>>> DisplayStudents()
+    {
+        var students = await _studentService.GetAllStudents();
+
+        return Ok(students);
+    }
     
     
     // POST: api/students
